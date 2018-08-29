@@ -35,12 +35,13 @@ describe('PREFIX TRIE', () => {
 
   it('should insert word when invoking insert', () => {
     trie.insert('hello');
-    trie.insert('hellen');
+    trie.insert('zebra');
     trie.insert('dog')
     console.log(JSON.stringify(trie, null, 4))
-    // expect
+    expect(Object.keys(trie.root.children)).to.deep.eq(['h', 'z', 'd'])
   })
-  it('should take the second letter as a child when word is inserted', () => {
+
+  it('should take the second letter in children when word is inserted', () => {
     // expect
   })
 
