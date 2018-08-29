@@ -30,18 +30,23 @@ describe('PREFIX TRIE', () => {
   it('should increase words each time we pass in a new word', () => {
     expect(trie.words).to.equal(0);
     trie.insert('hello');
-    console.log(trie.words)
     expect(trie.words).to.equal(1);
   })
 
-  it('should assign letter a string of the first letter', () => {
+  it('should insert word when invoking insert', () => {
     trie.insert('hello');
-    expect(letter).to.equal('h')
+    trie.insert('hellen');
+    trie.insert('dog')
+    console.log(JSON.stringify(trie, null, 4))
+    // expect
+  })
+  it('should take the second letter as a child when word is inserted', () => {
+    // expect
   })
 
-  it('should assign revisedWord the word without the first letter', () => {
+  // it('should assign revisedWord the word without the first letter', () => {
 
-  })
+  // })
 
   
 
