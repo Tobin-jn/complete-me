@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 
 import Trie from '../lib/Trie';
+import Node from '../lib/Node';
 
 describe('PREFIX TRIE', () => {
   let trie;
@@ -14,19 +15,35 @@ describe('PREFIX TRIE', () => {
   })
 
   it('should start with zero elements', () => {
-    expect(trie.totalWords).to.equal(0);
+    expect(trie.words).to.equal(0);
   })
 
-  it('should default root to null', () => {
-    expect(trie.root).to.equal(null);
+  it('should default root to a new Node', () => {
+    trie.root = new Node('p')
+    expect(trie.root).to.deep.equal({
+      letter: 'p',
+      end: false,
+      children: {}
+    });
   })
 
-  it('should increase totalWords each time we pass in a new word', () => {
-    expect(trie.totalWords).to.equal(0);
+  it('should increase words each time we pass in a new word', () => {
+    expect(trie.words).to.equal(0);
     trie.insert('hello');
-    console.log(trie.totalWords)
-    expect(trie.totalWords).to.equal(1);
+    console.log(trie.words)
+    expect(trie.words).to.equal(1);
   })
+
+  it('should assign letter a string of the first letter', () => {
+    trie.insert('hello');
+    expect(letter).to.equal('h')
+  })
+
+  it('should assign revisedWord the word without the first letter', () => {
+
+  })
+
+  
 
 //should return the first letter
 //it should see if there is a node for that letter
