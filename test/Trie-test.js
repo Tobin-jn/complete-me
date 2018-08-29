@@ -19,9 +19,8 @@ describe('PREFIX TRIE', () => {
   })
 
   it('should default root to a new Node', () => {
-    trie.root = new Node('p')
+    trie.root = new Node()
     expect(trie.root).to.deep.equal({
-      letter: 'p',
       end: false,
       children: {}
     });
@@ -35,21 +34,16 @@ describe('PREFIX TRIE', () => {
 
   it('should insert word when invoking insert', () => {
     trie.insert('hello');
-    trie.insert('zebra');
-    trie.insert('dog')
+    trie.insert('hellen');
+    trie.insert('hey')
+    trie.suggest('he')
     console.log(JSON.stringify(trie, null, 4))
-    expect(Object.keys(trie.root.children)).to.deep.eq(['h', 'z', 'd'])
+    // expect(Object.keys(trie.root.children)).to.deep.eq(['h', 'z', 'd'])
   })
 
-  it('should take the second letter in children when word is inserted', () => {
-    // expect
-  })
-
-  // it('should assign revisedWord the word without the first letter', () => {
-
+  // it('should take the second letter in children when word is inserted', () => {
+  //   // expect
   // })
-
-  
 
 //should return the first letter
 //it should see if there is a node for that letter
@@ -60,7 +54,5 @@ describe('PREFIX TRIE', () => {
 //it should instantiate a node if the letter does not exist
 //it should repeat until the length is 0
 //it should set the end of the node if it is the last letter
-
-
 
 });
