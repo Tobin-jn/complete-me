@@ -46,31 +46,31 @@ describe('PREFIX TRIE', () => {
 
   it('should return an array of all possible suggestions', () => {
     trie.insert('hey');
+    trie.insert('hell')
     trie.insert('hello');
     trie.insert('hellen');
 
-    expect (trie.suggest ('he')).to.deep.equal(['hey', 'hello', 'hellen'])
+    expect (trie.suggest ('he')).to.deep.equal(['hey', 'hell', 'hello', 'hellen'])
     expect (trie.suggest ('hel')).to.deep.equal(['hello', 'hellen'])
-    //add test with 'hel'
   })
-    it ('should return an array of all possible suggestions', () => {
-    trie.insert ('hellen');
-    trie.insert ('hello');
-    trie.insert ('hellocopter');
-    trie.insert ('hey');
-    trie.insert ('hi');
+  //   it ('should return an array of all possible suggestions', () => {
+  //   trie.insert ('hellen');
+  //   trie.insert ('hello');
+  //   trie.insert ('hellocopter');
+  //   trie.insert ('hey');
+  //   trie.insert ('hi');
 
-    expect (trie.suggest ('he')).to.deep.equal(['hellen', 'hello', 'hellocopter', 'hey'])
-    expect (trie.suggest ('he')).to.deep.equal(['hellen', 'hello', 'hellocopter', 'hey'])
-  })
+  //   expect (trie.suggest ('he')).to.deep.equal(['hellen', 'hello', 'hellocopter', 'hey'])
+  //   expect (trie.suggest ('hel')).to.deep.equal(['hellen', 'hello', 'hellocopter', 'hey'])
+  // })
 
-  it ('should populate when passing in the dictionary', () => {
-    expect (trie.count()).to.eq(0);
-    trie.populate(dictionary);
-    expect (trie.count()).to.eq(235886);
-    // console.log(JSON.stringify(trie, null, 4)) 
+  // it ('should populate when passing in the dictionary', () => {
+  //   expect (trie.count()).to.eq(0);
+  //   trie.populate(dictionary);
+  //   expect (trie.count()).to.eq(235886);
+  //   // console.log(JSON.stringify(trie, null, 4)) 
 
-  })
+  // })
 
 //should return the first letter
 //it should see if there is a node for that letter
