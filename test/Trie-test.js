@@ -1,6 +1,10 @@
 import { expect } from 'chai';
 import Trie from '../lib/Trie';
 import Node from '../lib/Node';
+import fs from 'fs';
+
+const text = "/usr/share/dict/words";
+const dictionary = fs.readFileSync(text).toString().trim().split('\n');
 
 
 describe('PREFIX TRIE', () => {
@@ -68,4 +72,13 @@ describe('PREFIX TRIE', () => {
     expect (trie.suggest ('he')).to.deep.equal(['hey', 'hell', 'hello', 'hellen'])
     expect (trie.suggest ('hel')).to.deep.equal(['hell', 'hello', 'hellen'])
   })
+
+  it('should insert all the words of a dictionary when passed into trie', () => {
+    //before word count should equal 0
+    expect (trie.count()).to.equal(0);
+    trie.populate(dictionary)
+    expect (trie.count()).to.equal(235886);
+    // console.log(JSON.stringify(trie, null, 4))
+  })
+
 });
