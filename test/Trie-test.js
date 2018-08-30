@@ -1,7 +1,11 @@
 import { expect } from 'chai';
-
+import fs from 'fs';
 import Trie from '../lib/Trie';
 import Node from '../lib/Node';
+
+
+const text = "/usr/share/dict/words";
+const dictionary = fs.readFileSync(text).toString().trim().split('\n');
 
 describe('PREFIX TRIE', () => {
   let trie;
@@ -19,9 +23,8 @@ describe('PREFIX TRIE', () => {
   })
 
   it('should default root to a new Node', () => {
-    trie.root = new Node('p')
+    // trie.root = new Node()
     expect(trie.root).to.deep.equal({
-      letter: 'p',
       end: false,
       children: {}
     });
@@ -35,20 +38,39 @@ describe('PREFIX TRIE', () => {
 
   it('should insert word when invoking insert', () => {
     trie.insert('hello');
+    trie.insert('dog');
+    trie.insert('cat')
+    // console.log(JSON.stringify(trie, null, 4))
+    expect(Object.keys(trie.root.children)).to.deep.equal(['h', 'd', 'c'])
+  })
+
+  it('should return an array of all possible suggestions', () => {
+    trie.insert('hey');
+    trie.insert('hello');
     trie.insert('hellen');
-    trie.insert('dog')
-    console.log(JSON.stringify(trie, null, 4))
-    // expect
+
+    expect (trie.suggest ('he')).to.deep.equal(['hey', 'hello', 'hellen'])
+    expect (trie.suggest ('hel')).to.deep.equal(['hello', 'hellen'])
+    //add test with 'hel'
   })
-  it('should take the second letter as a child when word is inserted', () => {
-    // expect
+    it ('should return an array of all possible suggestions', () => {
+    trie.insert ('hellen');
+    trie.insert ('hello');
+    trie.insert ('hellocopter');
+    trie.insert ('hey');
+    trie.insert ('hi');
+
+    expect (trie.suggest ('he')).to.deep.equal(['hellen', 'hello', 'hellocopter', 'hey'])
+    expect (trie.suggest ('he')).to.deep.equal(['hellen', 'hello', 'hellocopter', 'hey'])
   })
 
-  // it('should assign revisedWord the word without the first letter', () => {
+  it ('should populate when passing in the dictionary', () => {
+    expect (trie.count()).to.eq(0);
+    trie.populate(dictionary);
+    expect (trie.count()).to.eq(235886);
+    // console.log(JSON.stringify(trie, null, 4)) 
 
-  // })
-
-  
+  })
 
 //should return the first letter
 //it should see if there is a node for that letter
@@ -59,7 +81,5 @@ describe('PREFIX TRIE', () => {
 //it should instantiate a node if the letter does not exist
 //it should repeat until the length is 0
 //it should set the end of the node if it is the last letter
-
-
 
 });
