@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-
 import Trie from '../lib/Trie';
 import Node from '../lib/Node';
 
@@ -19,7 +18,7 @@ describe('PREFIX TRIE', () => {
   })
 
   it('should default root to a new Node', () => {
-    trie.root = new Node()
+    // trie.root = new Node()
     expect(trie.root).to.deep.equal({
       end: false,
       children: {}
@@ -34,16 +33,21 @@ describe('PREFIX TRIE', () => {
 
   it('should insert word when invoking insert', () => {
     trie.insert('hello');
-    trie.insert('hellen');
-    trie.insert('hey')
-    trie.suggest('he')
-    console.log(JSON.stringify(trie, null, 4))
-    // expect(Object.keys(trie.root.children)).to.deep.eq(['h', 'z', 'd'])
+    trie.insert('dog');
+    trie.insert('cat')
+    // console.log(JSON.stringify(trie, null, 4))
+    expect(Object.keys(trie.root.children)).to.deep.equal(['h', 'd', 'c'])
   })
 
-  // it('should take the second letter in children when word is inserted', () => {
-  //   // expect
-  // })
+  it('should return an array of all possible suggestions', () => {
+    trie.insert('hey');
+    trie.insert('hello');
+    trie.insert('hellen');
+
+    expect (trie.suggest ('he')).to.deep.equal(['hey', 'hello', 'hellen'])
+    expect (trie.suggest ('hel')).to.deep.equal(['hello', 'hellen'])
+    //add test with 'hel'
+  })
 
 //should return the first letter
 //it should see if there is a node for that letter
