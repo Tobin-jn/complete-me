@@ -1,6 +1,11 @@
 import { expect } from 'chai';
+import fs from 'fs';
 import Trie from '../lib/Trie';
 import Node from '../lib/Node';
+
+
+const text = "/usr/share/dict/words";
+const dictionary = fs.readFileSync(text).toString().trim().split('\n');
 
 describe('PREFIX TRIE', () => {
   let trie;
@@ -47,6 +52,24 @@ describe('PREFIX TRIE', () => {
     expect (trie.suggest ('he')).to.deep.equal(['hey', 'hello', 'hellen'])
     expect (trie.suggest ('hel')).to.deep.equal(['hello', 'hellen'])
     //add test with 'hel'
+  })
+    it ('should return an array of all possible suggestions', () => {
+    trie.insert ('hellen');
+    trie.insert ('hello');
+    trie.insert ('hellocopter');
+    trie.insert ('hey');
+    trie.insert ('hi');
+
+    expect (trie.suggest ('he')).to.deep.equal(['hellen', 'hello', 'hellocopter', 'hey'])
+    expect (trie.suggest ('he')).to.deep.equal(['hellen', 'hello', 'hellocopter', 'hey'])
+  })
+
+  it ('should populate when passing in the dictionary', () => {
+    expect (trie.count()).to.eq(0);
+    trie.populate(dictionary);
+    expect (trie.count()).to.eq(235886);
+    // console.log(JSON.stringify(trie, null, 4)) 
+
   })
 
 //should return the first letter
