@@ -68,13 +68,14 @@ describe('PREFIX TRIE', () => {
     trie.insert('hell');
     trie.insert('hello');
     trie.insert('hellen');
-    // console.log(JSON.stringify(trie, null, 4))
+    console.log(JSON.stringify(trie, null, 4))
+    console.log(trie.suggest('he'))
+
     expect (trie.suggest ('he')).to.deep.equal(['hey', 'hell', 'hello', 'hellen'])
     expect (trie.suggest ('hel')).to.deep.equal(['hell', 'hello', 'hellen'])
   })
 
-  it('should insert all the words of a dictionary when passed into trie', () => {
-    //before word count should equal 0
+  it.skip('should insert all the words of a dictionary when passed into trie', () => {
     expect (trie.count()).to.equal(0);
     trie.populate(dictionary)
     expect (trie.count()).to.equal(235886);
