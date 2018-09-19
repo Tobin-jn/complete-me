@@ -3,7 +3,11 @@
 ## Complete-me Project
 
 
-Autocomplete features are a very common convention for text inputs on search fields. In this project you are going to be building a low level version of an auto complete system in JavaScript. You’ll use the boilerplate repos you created during the project configuration lesson by following these steps:
+Autocomplete features are a very common convention for text inputs on search fields. In this project you are going to be building a low level version of an auto complete system in JavaScript. 
+
+<img width="1339" alt="screen shot 2018-09-19 at 6 05 13 am" src="https://user-images.githubusercontent.com/32209705/45752764-c7d63d00-bbd3-11e8-9800-9754f4cd9234.png">
+
+You’ll use the boilerplate repos you created during the project configuration lesson by following these steps:
 
 Retrieve the git remote URL for your boilerplate repo by navigating to your repo at github.com. It should be something like https://github.com/brittanystoroz/boilerplate.git. Copy this to your clipboard.
 
