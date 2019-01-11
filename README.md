@@ -1,4 +1,4 @@
-# complete-me
+# Complete Me
 
 ### About
 
@@ -12,16 +12,6 @@ This project builds a low level version of an auto complete system in JavaScript
 
 #### Example Implementation:
 <img width="1339" alt="screen shot 2018-09-19 at 6 05 13 am" src="https://user-images.githubusercontent.com/32209705/45752764-c7d63d00-bbd3-11e8-9800-9754f4cd9234.png">
-
-## Setup
-#### Frontend
-
-Clone the repo
-
-Run ```npm install``` from the root directory
-
-Run ```npm start``` and visit localhost:3000 in your browser
-
 
 ### Original Assignment
 
